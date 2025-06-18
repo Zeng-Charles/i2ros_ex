@@ -1,0 +1,21 @@
+<launch>
+
+<!--Starting location of obstacle with format "_x0:=1 _y0:=1"-->
+
+<arg name="x0" default = "5"/>
+<arg name="y0" default = "5"/>
+
+
+<!--R2D2 from tutorial: RViz, GUI, Gazebo-->
+<include file="$(find urdf_sim_tutorial)/launch/13-diffdrive.launch"/>
+
+<!--Add lost object to Gazebo environment-->
+<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+    args="-file $(find mission_r2d2)/urdf/lost_object.urdf 
+        -urdf 
+        -model lost_object
+        -x $(arg x0) -y $(arg y0) -z 0"
+    />
+<!--Node that assigns a tf to lost object and moves it in gazebo-->
+<!--node pkg="mission_r2d2" name="lost_object" type="lost_object" output="screen" args="_x0:=$(arg x0) _y0:=$(arg y0)"/-->
+</launch>

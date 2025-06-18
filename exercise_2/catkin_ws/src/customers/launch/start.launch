@@ -1,0 +1,9 @@
+<launch>
+
+  <!-- 启动 lidar_node -->
+  <node name="superos_node" pkg="superos" type="superos_node" output="screen" />
+
+  <!-- 启动 control_node -->
+  <node name="customers_client" pkg="customers" type="customers_client" output="screen" />
+
+</launch>
